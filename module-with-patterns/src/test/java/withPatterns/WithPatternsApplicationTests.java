@@ -1,10 +1,10 @@
-package tcc_design_patterns.withoutpatterns;
+package withPatterns;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WithoutpatternsApplicationTests {
+class WithPatternsApplicationTests {
 
 	@Test
 	void contextLoads() {
