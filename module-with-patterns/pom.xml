@@ -1,56 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Referência ao POM pai -->
     <parent>
         <groupId>com.tcc</groupId>
         <artifactId>tcc-design-patterns</artifactId>
         <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath> <!-- Caminho relativo para o POM da raiz -->
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>module-with-patterns</artifactId>
-    <name>Module With Patterns</name>
     <packaging>jar</packaging>
+    <name>Module With Patterns</name>
 
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-        <!-- Módulo sem as dependências duplicadas, pois são gerenciadas pelo POM da raiz -->
-        <dependencies>
-            <!-- Não precisa mais de versões explícitas aqui, pois elas são gerenciadas pelo Spring Boot -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-jpa</artifactId>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>2.2.224</version>
-                <scope>runtime</scope>
-            </dependency>
+    <dependencies>
+        <!-- Dependências específicas do módulo -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
-
-    <build>
-        <!-- Sem a duplicação do plugin spring-boot-maven-plugin, pois já está no POM raiz -->
-    </build>
 
 </project>
