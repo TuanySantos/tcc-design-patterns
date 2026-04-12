@@ -32,9 +32,13 @@ public class UserService {
 
     public UserResponse create(UserRequest request) {
         validate(request);
+        logger.info("[WITHOUT] Creating user");
 
-        logger.info("[WITHOUT] Creating user: {}", request.email());
+        Long id = insertUserAndReturnId(request);
+        return new UserResponse(id, request.name(), request.email(), request.cpf());
+    }
 
+    private Long insertUserAndReturnId(UserRequest request) {
         String sql = "INSERT INTO users(name, email, password, cpf) VALUES (?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -51,8 +55,7 @@ public class UserService {
         if (key == null) {
             throw new ValidationException("Não foi possível obter o ID gerado");
         }
-        Long id = key.longValue();
-        return new UserResponse(id, request.name(), request.email(), request.cpf());
+        return key.longValue();
     }
 
     public UserResponse findById(Long id) {
