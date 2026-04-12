@@ -23,6 +23,7 @@ import java.util.List;
 @Service
 public class UserService {
     private static final String INVALID_ID_MSG = "Id inválido";
+    private static final String USER_NOT_FOUND_MSG = "Usuário não encontrado";
 
     private final UserRepository repository;
 
@@ -56,7 +57,7 @@ public class UserService {
 
     public UserResponse findById(Long id) {
         if (id == null || id <= 0) throw new ValidationException(INVALID_ID_MSG);
-        return repository.findById(id).orElseThrow(() -> new ValidationException("Usuário não encontrado"));
+        return repository.findById(id).orElseThrow(() -> new ValidationException(USER_NOT_FOUND_MSG));
     }
 
     public List<UserResponse> findAll() {
@@ -68,7 +69,7 @@ public class UserService {
         validate(request);
 
         UserResponse updated = repository.update(id, request);
-        if (updated == null) throw new ValidationException("Usuário não encontrado");
+        if (updated == null) throw new ValidationException(USER_NOT_FOUND_MSG);
 
         notifyObservers("User updated: id=" + id);
         return updated;
@@ -77,7 +78,7 @@ public class UserService {
     public void delete(Long id) {
         if (id == null || id <= 0) throw new ValidationException(INVALID_ID_MSG);
         boolean deleted = repository.delete(id);
-        if (!deleted) throw new ValidationException("Usuário não encontrado");
+        if (!deleted) throw new ValidationException(USER_NOT_FOUND_MSG);
         notifyObservers("User deleted: id=" + id);
     }
 
