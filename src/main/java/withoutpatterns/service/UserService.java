@@ -1,5 +1,6 @@
 package withoutpatterns.service;
 
+
 import withoutpatterns.dto.UserRequest;
 import withoutpatterns.dto.UserResponse;
 import withoutpatterns.exception.ValidationException;
@@ -7,6 +8,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -17,6 +20,8 @@ public class UserService {
 
     private final JdbcTemplate jdbcTemplate;
 
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
     public UserService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -24,7 +29,7 @@ public class UserService {
     public UserResponse create(UserRequest request) {
         validate(request);
 
-        System.out.println("[WITHOUT] Creating user: " + request.email());
+        logger.info("[WITHOUT] Creating user: {}", request.email());
 
         String sql = "INSERT INTO users(name, email, password, cpf) VALUES (?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -74,7 +79,7 @@ public class UserService {
         if (id == null || id <= 0) throw new ValidationException("Id inválido");
         validate(request);
 
-        System.out.println("[WITHOUT] Updating user id=" + id);
+        logger.info("[WITHOUT] Updating user id={}", id);
 
         String sql = "UPDATE users SET name=?, email=?, password=?, cpf=? WHERE id=?";
         int updated = jdbcTemplate.update(sql,
@@ -87,7 +92,7 @@ public class UserService {
     public void delete(Long id) {
         if (id == null || id <= 0) throw new ValidationException("Id inválido");
 
-        System.out.println("[WITHOUT] Deleting user id=" + id);
+        logger.info("[WITHOUT] Deleting user id={}", id);
 
         String sql = "DELETE FROM users WHERE id=?";
         int deleted = jdbcTemplate.update(sql, id);
