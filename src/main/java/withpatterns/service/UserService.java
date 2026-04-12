@@ -51,7 +51,7 @@ public class UserService {
     public UserResponse create(UserRequest request) {
         validate(request);
         UserResponse created = repository.save(request);
-        notifyObservers("User created: email=" + request.email());
+        notifyObservers("User created");
         return created;
     }
 
