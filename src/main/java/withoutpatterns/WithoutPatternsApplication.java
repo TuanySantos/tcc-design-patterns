@@ -1,13 +1,11 @@
-package tcc_design_patterns.withoutpatterns;
+package withoutpatterns;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WithoutpatternsApplication {
-
+public class WithoutPatternsApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(WithoutpatternsApplication.class, args);
+		SpringApplication.run(WithoutPatternsApplication.class, args);
 	}
-
 }
