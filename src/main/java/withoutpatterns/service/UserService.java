@@ -24,6 +24,8 @@ public class UserService {
 
     private static final String INVALID_ID_MSG = "Id inválido";
 
+    private static final String USER_NOT_FOUND_MSG = "Usuário não encontrado";
+
     public UserService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -87,7 +89,7 @@ public class UserService {
         int updated = jdbcTemplate.update(sql,
                 request.name(), request.email(), request.password(), request.cpf(), id);
 
-        if (updated == 0) throw new ValidationException("Usuário não encontrado");
+        if (updated == 0) throw new ValidationException(USER_NOT_FOUND_MSG);
         return new UserResponse(id, request.name(), request.email(), request.cpf());
     }
 
@@ -98,7 +100,7 @@ public class UserService {
 
         String sql = "DELETE FROM users WHERE id=?";
         int deleted = jdbcTemplate.update(sql, id);
-        if (deleted == 0) throw new ValidationException("Usuário não encontrado");
+        if (deleted == 0) throw new ValidationException(USER_NOT_FOUND_MSG);
     }
 
     // Regras (iguais às do projeto com patterns para garantir equivalência)
