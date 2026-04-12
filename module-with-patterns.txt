@@ -1,0 +1,44 @@
+.
+├── module-with-patterns.txt
+├── pom.xml
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── withPatterns
+    │   │       ├── WithPatternsApplication.java
+    │   │       ├── config
+    │   │       │   └── DatabaseConnectionSingleton.java
+    │   │       ├── controller
+    │   │       │   └── UserController.java
+    │   │       ├── exception
+    │   │       │   └── ValidationException.java
+    │   │       ├── model
+    │   │       │   ├── Cpf.java
+    │   │       │   ├── Email.java
+    │   │       │   ├── Password.java
+    │   │       │   └── User.java
+    │   │       ├── observer
+    │   │       │   ├── UserObserver.java
+    │   │       │   └── impl
+    │   │       │       ├── AuditLogObserver.java
+    │   │       │       └── EmailNotificationObserver.java
+    │   │       ├── repository
+    │   │       │   ├── UserRepository.java
+    │   │       │   ├── UserRepositoryCustom.java
+    │   │       │   └── impl
+    │   │       │       └── UserRepositoryCustomImpl.java
+    │   │       ├── service
+    │   │       │   └── UserService.java
+    │   │       └── strategy
+    │   │           ├── ValidationStrategy.java
+    │   │           └── impl
+    │   │               ├── CpfValidationStrategy.java
+    │   │               ├── EmailValidationStrategy.java
+    │   │               └── PasswordValidationStrategy.java
+    │   └── resources
+    │       ├── application.properties
+    │       ├── static
+    │       └── templates
+    └── pom.xml
+
+19 directories, 23 files
