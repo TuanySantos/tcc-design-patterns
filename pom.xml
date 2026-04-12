@@ -4,9 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>tcc_design_patterns</groupId>
-    <artifactId>tcc-crud</artifactId>
+    <artifactId>module-without-patterns</artifactId>
     <version>1.0.0</version>
-    <name>tcc-crud</name>
 
     <properties>
         <java.version>21</java.version>
