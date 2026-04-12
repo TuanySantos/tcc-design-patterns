@@ -38,7 +38,11 @@ public class UserService {
             return ps;
         }, keyHolder);
 
-        Long id = (keyHolder.getKey() != null) ? keyHolder.getKey().longValue() : null;
+        Number key = keyHolder.getKey();
+        if (key == null) {
+            throw new ValidationException("Não foi possível obter o ID gerado");
+        }
+        Long id = key.longValue();
         return new UserResponse(id, request.name(), request.email(), request.cpf());
     }
 
