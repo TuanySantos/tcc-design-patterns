@@ -1,3 +1,5 @@
+
+
 package withpatterns.service;
 
 import withpatterns.config.DatabaseConnectionSingleton;
@@ -20,6 +22,7 @@ import java.util.List;
 
 @Service
 public class UserService {
+    private static final String INVALID_ID_MSG = "Id inválido";
 
     private final UserRepository repository;
 
@@ -52,7 +55,7 @@ public class UserService {
     }
 
     public UserResponse findById(Long id) {
-        if (id == null || id <= 0) throw new ValidationException("Id inválido");
+        if (id == null || id <= 0) throw new ValidationException(INVALID_ID_MSG);
         return repository.findById(id).orElseThrow(() -> new ValidationException("Usuário não encontrado"));
     }
 
@@ -61,7 +64,7 @@ public class UserService {
     }
 
     public UserResponse update(Long id, UserRequest request) {
-        if (id == null || id <= 0) throw new ValidationException("Id inválido");
+        if (id == null || id <= 0) throw new ValidationException(INVALID_ID_MSG);
         validate(request);
 
         UserResponse updated = repository.update(id, request);
@@ -72,7 +75,7 @@ public class UserService {
     }
 
     public void delete(Long id) {
-        if (id == null || id <= 0) throw new ValidationException("Id inválido");
+        if (id == null || id <= 0) throw new ValidationException(INVALID_ID_MSG);
         boolean deleted = repository.delete(id);
         if (!deleted) throw new ValidationException("Usuário não encontrado");
         notifyObservers("User deleted: id=" + id);
