@@ -22,6 +22,8 @@ public class UserService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
+    private static final String INVALID_ID_MSG = "Id inválido";
+
     public UserService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -52,7 +54,7 @@ public class UserService {
     }
 
     public UserResponse findById(Long id) {
-        if (id == null || id <= 0) throw new ValidationException("Id inválido");
+        if (id == null || id <= 0) throw new ValidationException(INVALID_ID_MSG);
 
         String sql = "SELECT id, name, email, cpf FROM users WHERE id = ?";
         return jdbcTemplate.queryForObject(sql, (rs, rowNum) ->
@@ -76,7 +78,7 @@ public class UserService {
     }
 
     public UserResponse update(Long id, UserRequest request) {
-        if (id == null || id <= 0) throw new ValidationException("Id inválido");
+        if (id == null || id <= 0) throw new ValidationException(INVALID_ID_MSG);
         validate(request);
 
         logger.info("[WITHOUT] Updating user id={}", id);
@@ -90,7 +92,7 @@ public class UserService {
     }
 
     public void delete(Long id) {
-        if (id == null || id <= 0) throw new ValidationException("Id inválido");
+        if (id == null || id <= 0) throw new ValidationException(INVALID_ID_MSG);
 
         logger.info("[WITHOUT] Deleting user id={}", id);
 
