@@ -25,7 +25,19 @@ Avaliar como a aplicação de **Design Patterns** influencia atributos de qualid
 
 O repositório está organizado da seguinte forma:
 
-Cada módulo representa uma abordagem arquitetural distinta, mantendo:
+## 🌿 Organização por Branches
+
+As duas versões do sistema estão separadas por **branches** neste repositório:
+
+- **branch `without-patterns`**  
+  Contém a implementação da API **sem aplicação de Design Patterns**, utilizada como baseline para comparação.
+
+- **branch `with-patterns`**  
+  Contém a implementação da mesma API **com aplicação de Design Patterns**, mantendo equivalência funcional com a versão sem padrões.
+
+A separação por branches foi adotada para facilitar a análise comparativa entre as abordagens, permitindo isolar claramente as diferenças arquiteturais sem duplicação desnecessária de código.
+
+Cada versão representa uma abordagem arquitetural distinta, mantendo:
 - Mesma regra de negócio
 - Mesmo domínio
 - Mesmas validações funcionais
