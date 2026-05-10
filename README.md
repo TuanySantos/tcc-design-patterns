@@ -24,3 +24,95 @@ Avaliar como a aplicação de **Design Patterns** influencia atributos de qualid
 ## 🧩 Estrutura do Repositório
 
 O repositório está organizado da seguinte forma:
+
+Cada módulo representa uma abordagem arquitetural distinta, mantendo:
+- Mesma regra de negócio
+- Mesmo domínio
+- Mesmas validações funcionais
+- Mesma base de dados
+
+---
+
+## 🧪 Descrição dos Módulos
+
+### 🔹 Module Without Patterns
+
+Neste módulo, a aplicação foi desenvolvida **sem o uso explícito de padrões de projeto**, seguindo uma abordagem mais direta e simplificada.
+
+Características principais:
+- Lógica de negócio, validação e persistência concentradas na camada de serviço
+- Acesso ao banco de dados realizado diretamente via `JdbcTemplate`
+- Forte acoplamento entre responsabilidades
+- Estrutura propositalmente simples para evidenciar limitações arquiteturais
+
+Este módulo serve como **baseline** para comparação.
+
+---
+
+### 🔹 Module With Patterns
+
+Neste módulo, a mesma API foi reimplementada aplicando **padrões de projeto e boas práticas de design orientado a objetos**.
+
+Características principais:
+- Separação clara de responsabilidades
+- Uso de camadas dedicadas (Controller, Service, Repository, Validators, etc.)
+- Aplicação de Design Patterns (ex.: Repository, Strategy, Factory, Facade)
+- Estrutura voltada à extensibilidade, manutenção e testabilidade
+
+Este módulo representa a **versão refatorada e orientada a padrões** do sistema.
+
+---
+
+## 📊 Metodologia de Avaliação
+
+A comparação entre os módulos é realizada a partir de:
+
+- Análise estrutural do código
+- Identificação de antipadrões
+- Métricas estáticas de qualidade
+  - Complexidade ciclomática
+  - Code Smells
+  - Cobertura de testes
+- Ferramenta de apoio: **SonarQube**
+
+---
+
+## 🛠 Tecnologias Utilizadas
+
+- Java 21
+- Spring Boot 3.x
+- Spring Web
+- Spring JDBC
+- Banco de dados H2 (em memória)
+- Maven
+- JUnit / Spring Test
+- JaCoCo
+- SonarQube
+
+---
+
+## 📚 Contexto Acadêmico
+
+Este projeto foi desenvolvido como parte do Trabalho de Conclusão de Curso do **MBA em Engenharia de Software**, tendo como foco o estudo prático de **Design Patterns aplicados a sistemas reais**, com ênfase em qualidade de código e arquitetura de software.
+
+---
+
+## 📌 Observações Importantes
+
+- Ambos os módulos são funcionalmente equivalentes.
+- As validações e regras de negócio foram mantidas iguais, garantindo comparação justa.
+- Diferenças observadas nos resultados estão diretamente relacionadas à abordagem arquitetural adotada.
+
+---
+
+## 👩‍💻 Autora
+
+**Tuany Aparecida Brito dos Santos**  
+MBA em Engenharia de Software  
+
+---
+
+## 📄 Licença
+
+Projeto desenvolvido para fins educacionais e acadêmicos.
+
