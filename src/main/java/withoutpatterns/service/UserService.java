@@ -38,7 +38,7 @@ public class UserService {
         return new UserResponse(id, request.name(), request.email(), request.cpf());
     }
 
-    private Long insertUserAndReturnId(UserRequest request) {
+    protected Long insertUserAndReturnId(UserRequest request) {
         String sql = "INSERT INTO users(name, email, password, cpf) VALUES (?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
